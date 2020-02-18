@@ -8,18 +8,22 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
+          <field name="date"/>
         </tree>
       </field>
     </record>
 
     <record model="ir.ui.view" id="reclamaciones.reclamaciones_form">
-      <field name="name">rreclamaciones.reclamaciones.form</field>
+      <field name="name">reclamaciones.reclamaciones.form</field>
       <field name="model">reclamaciones.reclamaciones</field>
       <field name="arch" type="xml">
         <form>
           <group colspan="2" col="2">
             <field name="name"/>
             <field name="date"/>
+            <field name="description"/>
+            <field name="valid"/>
+            <field name="observation"/>
           </group>
         </form>
       </field>

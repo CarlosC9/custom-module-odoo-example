@@ -2,14 +2,11 @@
 
 from odoo import models, fields, api
 
-# class reclamaciones(models.Model):
-#     _name = 'reclamaciones.reclamaciones'
+_sql_constraints = [
+("id_unique", 'UNIQUE(id_reclamaciones)', 'El ID de la reclamación debe ser único')
+]
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+class reclamaciones(models.Model):
+    _name = 'reclamaciones.reclamaciones'
+
+    id_reclamaciones = fields.Char(string="ID", required=True)

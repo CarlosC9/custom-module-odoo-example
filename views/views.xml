@@ -1,7 +1,6 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-
+    <!-- Vista tree -->
     <record model="ir.ui.view" id="reclamaciones.reclamaciones_tree">
       <field name="name">reclamaciones.reclamaciones.tree</field>
       <field name="model">reclamaciones.reclamaciones</field>
@@ -9,10 +8,12 @@
         <tree>
           <field name="name"/>
           <field name="date"/>
+          <field name="client"/>
         </tree>
       </field>
     </record>
 
+    <!-- Vista form -->
     <record model="ir.ui.view" id="reclamaciones.reclamaciones_form">
       <field name="name">reclamaciones.reclamaciones.form</field>
       <field name="model">reclamaciones.reclamaciones</field>
@@ -24,12 +25,32 @@
             <field name="description"/>
             <field name="valid"/>
             <field name="observation"/>
+            <field name="client"/>
           </group>
         </form>
       </field>
     </record>
 
+    <!-- Vista heredada -->
+    <record id="view_reclamaciones_clientes_form" model="ir.ui.view">
+        <field name="name">res.partner.reclamaciones.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="replace">
+                <page string="Reclamaciones" name="pp">
+                  <field name="reclamaciones">
+                    <tree>
+                      <field name="name"/>
+                      <field name="date"/>
+                    </tree>
+                  </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
 
+    <!-- actions window -->
     <record model="ir.actions.act_window" id="reclamaciones.reclamaciones_action_window">
       <field name="name">Reclamaciones</field>
       <field name="res_model">reclamaciones.reclamaciones</field>
@@ -37,35 +58,15 @@
     </record>
 
 
-    <!-- <record model="ir.actions.server" id="reclamaciones.action_server">
-      <field name="name">reclamaciones server</field>
-      <field name="model_id" ref="model_reclamaciones_reclamaciones"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record> -->
-
-
     <!-- Top menu item -->
-
     <menuitem name="Reclamaciones" id="reclamaciones.menu_root" action="reclamaciones.reclamaciones_action_window"/>
 
     <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="reclamaciones.menu_1" parent="reclamaciones.menu_root"/>
-    <menuitem name="Menu 2" id="reclamaciones.menu_2" parent="reclamaciones.menu_root"/>
-    -->
+    <menuitem name="Incidencias" id="reclamaciones.incidencias_menu" parent="reclamaciones.menu_root"/>
+
     <!-- actions -->
-    <!--
-    <menuitem name="List" id="reclamaciones.menu_1_list" parent="reclamaciones.menu_1"
-              action="reclamaciones.action_window"/>
-    <menuitem name="Server to list" id="reclamaciones" parent="reclamaciones.menu_2"
-              action="reclamaciones.action_server"/>
-    -->
+    <menuitem name="Incidencias" id="reclamaciones.incidencias_menu_incidencias" parent="reclamaciones.incidencias_menu"
+              action="reclamaciones.reclamaciones_action_window"/>
+
   </data>
 </odoo>

@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+# Clase
 class reclamaciones(models.Model):
     _name = 'reclamaciones.reclamaciones'
 
@@ -10,6 +11,7 @@ class reclamaciones(models.Model):
     description = fields.Text(string="Descripción", required=True)
     valid = fields.Boolean(string="Válido", required=True)
     observation = fields.Text(string="Observaciones", required=False)
+    client = fields.Many2one(comodel_name="res.partner", string="Cliente", required=True, ondelete="cascade")
 
     _sql_constraints = [
         ('name_unique', 'UNIQUE(name)', "El id de la reclamación debe ser unico")
@@ -19,3 +21,10 @@ class reclamaciones(models.Model):
     def _check_id(self):
         if len(self.name) > 6:
             raise models.ValidationError('El id no puede ser mas largo de 6 letras')
+
+# Clase heredada
+class reclamaciones_clientes(models.Model):
+    _name = "res.partner"
+    _inherit = "res.partner"
+
+    reclamaciones = fields.One2many(comodel_name="reclamaciones.reclamaciones", inverse_name="client", string="Reclamaciones")

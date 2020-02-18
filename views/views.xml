@@ -7,7 +7,7 @@
       <field name="model">reclamaciones.reclamaciones</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="id"/>
+          <field name="name"/>
         </tree>
       </field>
     </record>
@@ -18,7 +18,8 @@
       <field name="arch" type="xml">
         <form>
           <group colspan="2" col="2">
-            <field name="id"/>
+            <field name="name"/>
+            <field name="date"/>
           </group>
         </form>
       </field>
@@ -27,7 +28,7 @@
 
     <record model="ir.actions.act_window" id="reclamaciones.reclamaciones_action_window">
       <field name="name">Reclamaciones</field>
-      <field name="res_model">reclamaciones.reclamaciones.action_window</field>
+      <field name="res_model">reclamaciones.reclamaciones</field>
       <field name="view_mode">tree,form</field>
     </record>
 

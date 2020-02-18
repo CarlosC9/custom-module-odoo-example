@@ -3,7 +3,7 @@
     'name': "reclamaciones",
 
     'summary': """
-        Modulo de reclamaciones""",
+        Módulo de reclamaciones""",
 
     'description': """
         Long description of module's purpose

@@ -1,32 +1,38 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="reclamaciones.list">
-      <field name="name">reclamaciones list</field>
+
+    <record model="ir.ui.view" id="reclamaciones.reclamaciones_tree">
+      <field name="name">reclamaciones.reclamaciones.tree</field>
       <field name="model">reclamaciones.reclamaciones</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="id"/>
         </tree>
       </field>
     </record>
-    -->
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="reclamaciones.action_window">
-      <field name="name">reclamaciones window</field>
-      <field name="res_model">reclamaciones.reclamaciones</field>
+    <record model="ir.ui.view" id="reclamaciones.reclamaciones_form">
+      <field name="name">rreclamaciones.reclamaciones.form</field>
+      <field name="model">reclamaciones.reclamaciones</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="id"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="reclamaciones.reclamaciones_action_window">
+      <field name="name">Reclamaciones</field>
+      <field name="res_model">reclamaciones.reclamaciones.action_window</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="reclamaciones.action_server">
+
+    <!-- <record model="ir.actions.server" id="reclamaciones.action_server">
       <field name="name">reclamaciones server</field>
       <field name="model_id" ref="model_reclamaciones_reclamaciones"/>
       <field name="state">code</field>
@@ -37,13 +43,13 @@
           "res_model": self._name,
         }
       </field>
-    </record>
-    -->
+    </record> -->
+
 
     <!-- Top menu item -->
-    <!--
-    <menuitem name="reclamaciones" id="reclamaciones.menu_root"/>
-    -->
+
+    <menuitem name="Reclamaciones" id="reclamaciones.menu_root" action="reclamaciones.reclamaciones_action_window"/>
+
     <!-- menu categories -->
     <!--
     <menuitem name="Menu 1" id="reclamaciones.menu_1" parent="reclamaciones.menu_root"/>

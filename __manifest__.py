@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'account'],
 
     # always loaded
     'data': [
@@ -32,5 +32,5 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'application':"True"
+    'application':"True",
 }

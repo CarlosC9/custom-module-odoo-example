@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- Grupo creador de reclamaciones -->
+    <record id="group_create" model="res.groups">
+      <field name="name">Reclamaciones/Crear reclamaciones</field>
+      <field name="comment">Perfil para crear reclamaciones</field>
+    </record>
+
+    <!-- Grupo gestor de reclamaciones -->
+    <record id="group_manager" model="res.groups">
+      <field name="name">Reclamaciones/Gestor reclamaciones</field>
+      <field name="comment">Perfil para gestionar las reclamaciones</field>
+    </record>
+
+  </data>
+</odoo>

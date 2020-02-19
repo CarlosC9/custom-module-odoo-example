@@ -27,4 +27,4 @@ class reclamaciones_clientes(models.Model):
     _name = "res.partner"
     _inherit = "res.partner"
 
-    reclamaciones = fields.One2many(comodel_name="reclamaciones.reclamaciones", inverse_name="client", string="Reclamaciones")
+    reclamaciones = fields.One2many(groups="reclamaciones.group_manager, reclamaciones.group_create",comodel_name="reclamaciones.reclamaciones", inverse_name="client", string="Reclamaciones")

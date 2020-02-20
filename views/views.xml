@@ -1,5 +1,60 @@
 <odoo>
   <data>
+
+    <template id="report_reclamaciones_reclamaciones">
+      <t t-call="web.html_container">
+        <style>
+        #complaint {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        #complaint td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #complaint tr:nth-child(even){background-color: #f2f2f2;}
+
+        #complaint tr:hover {background-color: #ddd;}
+
+        #complaint th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #4CAF50;
+          color: white;
+        }
+        </style>
+        <h1>Reclamaciones</h1>
+        <table id="complaint">
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Cliente</th>
+          </tr>
+          <t t-foreach="docs" t-as="doc">
+            <tr>
+              <td><t t-esc="doc.name"/></td>
+              <td><t t-esc="doc.date"/></td>
+              <td><t t-esc="doc.description"/></td>
+              <td><t t-esc="doc.client.name"/></td>
+            </tr>
+          </t>
+        </table>
+      </t>
+    </template>
+
+    <report
+    id="reclamaciones_reclamaciones_report"
+    model="reclamaciones.reclamaciones"
+    string="Reclamación"
+    report_type="qweb-pdf"
+    name="reclamaciones.report_reclamaciones_reclamaciones"
+    file="reclamaciones.report_reclamaciones_reclamaciones"/>
+
     <!-- Vista tree -->
     <record model="ir.ui.view" id="reclamaciones.reclamaciones_tree">
       <field name="name">reclamaciones.reclamaciones.tree</field>

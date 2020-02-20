@@ -11,7 +11,7 @@ class reclamaciones(models.Model):
     description = fields.Text(string="Descripción", required=True)
     valid = fields.Boolean(string="Válido", required=True)
     observation = fields.Text(string="Observaciones", required=False)
-    client = fields.Many2one(comodel_name="res.partner", string="Cliente", required=True, ondelete="cascade")
+    client = fields.Many2one(comodel_name="res.partner", string="Cliente", required=True, ondelete="cascade", domain=[('customer', '=', True)])
 
     _sql_constraints = [
         ('name_unique', 'UNIQUE(name)', "El id de la reclamación debe ser unico")
